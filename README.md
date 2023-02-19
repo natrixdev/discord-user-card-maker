@@ -2,13 +2,13 @@
 <h3>By <a href="https://github.com/natrixdev">natrix</a><h3>
 </div>
 
-**Setup: ** 
+**Setup:** 
 `pip install discord io tkinter`
 
-**Features: **
+**Features:**
 - Create a profile card 
 - Fast & Simple code 
 - Updated 
 
-**Credits: **
+**Credits:**
 Developer : [natrix](https:/github.com/natrixdev) 
