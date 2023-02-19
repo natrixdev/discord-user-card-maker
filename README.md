@@ -2,7 +2,7 @@
 <h3>By <a href="https://github.com/natrixdev">natrix</a><h3>
 </div>
 
-**Setup:** 
+**Setup:** <br/>
 `pip install discord io tkinter`
 
 **Features:**
@@ -10,5 +10,5 @@
 - Fast & Simple code 
 - Updated 
 
-**Credits:**
+**Credits:**<br/>
 Developer : [natrix](https:/github.com/natrixdev) 
