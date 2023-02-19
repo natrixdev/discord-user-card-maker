@@ -12,3 +12,8 @@
 
 **Credits:**<br/>
 Developer : [natrix](https:/github.com/natrixdev) 
+
+**Support:** <br/>
+| Star                                     | Fork                                     |
+| ---------------------------------------- | ---------------------------------------- |
+| ![Star](https://i.imgur.com/41nhvJ1.png) | ![Fork](https://i.imgur.com/MOtHDPV.png) |
