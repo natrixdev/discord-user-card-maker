@@ -7,46 +7,47 @@ TOKEN = "your_discord_bot_token"
 
 client = discord.Client()
 
-# Function to generate the profile card
-def generate_profile_card(user):
-    # Create a new Tkinter window
-    window = tk.Tk()
-    window.title(f"{user.name}#{user.discriminator}")
-    window.configure(bg="black")
+# Create a Tkinter window
+window = tk.Tk()
+window.configure(bg="black")
 
+# Create Tkinter labels
+avatar_label = tk.Label(window, bg="black")
+name_label = tk.Label(window, fg="white", bg="black", font=("Arial", 20))
+id_label = tk.Label(window, fg="white", bg="black", font=("Arial", 16))
+created_at_label = tk.Label(window, fg="white", bg="black", font=("Arial", 16))
+badge_label = tk.Label(window, fg="white", bg="black", font=("Arial", 16))
+status_label = tk.Label(window, fg="white", bg="black", font=("Arial", 16))
+
+# Function to update the profile card
+def update_profile_card(user):
     # Load the user's avatar image
     avatar_url = user.avatar_url_as(format="png")
     avatar_data = BytesIO(avatar_url.read())
     avatar_image = tk.PhotoImage(data=avatar_data.getvalue())
     
-    # Add the user's avatar to the window
-    avatar_label = tk.Label(window, image=avatar_image)
-    avatar_label.pack(side="left", padx=10, pady=10)
+    # Update the user's avatar in the window
+    avatar_label.configure(image=avatar_image)
+    avatar_label.image = avatar_image
     
-    # Add the user's name and discriminator to the window
-    name_label = tk.Label(window, text=f"{user.name}#{user.discriminator}", fg="white", bg="black", font=("Arial", 20))
-    name_label.pack(padx=10, pady=10)
+    # Update the user's name and discriminator in the window
+    name_label.configure(text=f"{user.name}#{user.discriminator}")
     
-    # Add the user's ID and account creation date to the window
-    id_label = tk.Label(window, text=f"ID: {user.id}", fg="white", bg="black", font=("Arial", 16))
-    id_label.pack(padx=10, pady=10)
-    created_at_label = tk.Label(window, text=f"Created At: {user.created_at}", fg="white", bg="black", font=("Arial", 16))
-    created_at_label.pack(padx=10, pady=10)
+    # Update the user's ID and account creation date in the window
+    id_label.configure(text=f"ID: {user.id}")
+    created_at_label.configure(text=f"Created At: {user.created_at}")
     
-    # Add the user's badges to the window
+    # Update the user's badges in the window
     badge_text = "Badges: "
     for badge in user.public_flags.all():
         badge_text += str(badge) + " "
-    badge_label = tk.Label(window, text=badge_text, fg="white", bg="black", font=("Arial", 16))
-    badge_label.pack(padx=10, pady=10)
+    badge_label.configure(text=badge_text)
     
-    # Add the user's status to the window
-    status_text = f"Status: {user.status}"
-    status_label = tk.Label(window, text=status_text, fg="white", bg="black", font=("Arial", 16))
-    status_label.pack(padx=10, pady=10)
+    # Update the user's status in the window
+    status_label.configure(text=f"Status: {user.status}")
     
-    # Run the Tkinter window
-    window.mainloop()
+    # Update the window layout
+    window.update_idletasks()
 
 # Event handler for when the bot is ready
 @client.event
@@ -68,8 +69,16 @@ async def on_message(message):
         # Retrieve the user object from the ID
         user = await client.fetch_user(user_id)
         
-        # Generate the profile card for the user
-        generate_profile_card(user)
+        # Update the profile card for the user
+        update_profile_card(user)
+
+# Set the layout for the Tkinter labels
+avatar_label.pack(side="left", padx=10, pady=10)
+name_label.pack(padx=10, pady=10)
+id_label.pack(padx=10, pady=10)
+created_at_label.pack(padx=10, pady=10)
+badge_label.pack(padx=10, pady=10)
+status_label.pack(padx=10, pady=10)
 
 # Start the bot
 client.run(TOKEN)
